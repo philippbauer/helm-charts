@@ -1,0 +1,9 @@
+apiVersion: v1
+entries:
+  influxdb2:
+  - apiVersion: v2
+    appVersion: 2.0.6
+    description: A Helm chart for InfluxDB v2
+    name: influxdb2
+    type: application
+    version: 2.0.2
