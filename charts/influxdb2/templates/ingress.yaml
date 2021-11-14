@@ -1,5 +1,5 @@
 {{- if .Values.ingress.enabled -}}
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: {{ include "influxdb.fullname" . }}
@@ -24,7 +24,10 @@ spec:
     http:
       paths:
       - path: {{ .Values.ingress.path }}
+        pathType: Prefix
         backend:
-          serviceName: {{ include "influxdb.fullname" . }}
-          servicePort: {{ .Values.service.portName }}
+          service:
+            name: {{ include "influxdb.fullname" . }}
+            port:
+              name: {{ .Values.service.portName }}
 {{- end -}}
